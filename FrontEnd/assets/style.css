@@ -58,6 +58,13 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+header a{
+	text-decoration: none;
+	color: black;
+}
+.login{
+	font-weight: bolder;
+}
 section {
 	margin: 50px 0
 }
@@ -125,6 +132,28 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filtre{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.filtre button {
+	font-family: 'Syne', sans-serif;
+	background-color: white;
+	color: #1D6154;
+	border: 1px solid #1D6154;
+	border-radius: 50px;
+	padding: 10px;
+	min-width: 100px;
+	margin-right: 15px;
+}
+.filtre button:hover{
+	background: #1D6154;
+	color: white;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -139,11 +168,8 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
-}
-#contact > * {
+	margin: auto;
 	text-align: center;
-
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -178,6 +204,17 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
+}
+
+#contact a{
+	text-decoration: underline;
+	text-align: center;
+}
+
+#contact a:hover{
+	text-decoration: none;
+	cursor : pointer;
 }
 
 footer nav ul {
