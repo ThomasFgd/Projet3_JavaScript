@@ -1,3 +1,7 @@
+const loginError = document.querySelector(".erreur");
+const LoginElement = document.createElement("p");
+loginError.appendChild(LoginElement);
+
 const formulaireLogin = document.querySelector(".form-login");
 formulaireLogin.addEventListener("submit", async function(event) {
     event.preventDefault();
@@ -10,40 +14,26 @@ formulaireLogin.addEventListener("submit", async function(event) {
 
     await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
-        headers : { "Contet-Type": "application/json" },
+        headers : { "Content-Type": "application/json",
+        'Access-Control-Allow-Origin':'*' },
         body: chargeUtile
     })
-    .then(response => {
-
-        console.log(response)
-        
+    .then(function (response){
         if (response.status === 200){
-            return response.json()
+            return response.json();
         }
-        else if(response.status === 401){
-            loginElement.innerText="Mot de passe invalide. ";
-            document.getElementById('password').value=""
-            document.getElementById('password').focus()
-            return response.json()
-        }
-        else if(response.status === 404){
-            loginElement.innerText="Email inconnu.";
-            document.getElementById('password').value=""
-            document.getElementById('email').value=""
-            document.getElementById('email').focus()
-            return response.json()
+        else{
+            LoginElement.innerText="Mot de passe et/ou e-mail invalide."
+            document.getElementById('email').value="";
+            document.getElementById('password').value="";
+            return response.json();
         }
     })
+    .then(function (Token){
+        if(Token.token){
+            localStorage.setItem('token', Token.token)
+            console.log(localStorage)
 
-    .then(function(responseToken){
-        
-        if(responseToken.token){
-            sessionStorage.setItem('token',responseToken.token);
-            document.location.href="index.html";
-            console.log(responseToken.token)  // test
-        }
-    })
-    .catch(error =>{
-        console.error(error)
+        };
     })
 });
