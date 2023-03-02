@@ -33,7 +33,7 @@ formulaireLogin.addEventListener("submit", async function(event) {
         if(Token.token){
             localStorage.setItem('token', Token.token)
             console.log(localStorage)
-
+            window.location.href="index.html"
         };
     })
 });

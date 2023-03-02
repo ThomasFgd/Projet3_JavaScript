@@ -53,6 +53,10 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+.admin{
+	display: block;
+}
 #edition-mode {
 	height: 60px;
 	background-color: black;
@@ -156,9 +160,47 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+#intro{
+	padding: 0;
+	margin: 0;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 5px;
+}
+#intro a{
+	color: black;
+	text-decoration: none;
+}
+
+#intro p{
+	margin: 0;
+}
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+#modifier{
+	justify-content: center ;
+	display: flex;
+	flex-direction: row;
+
+}
+
+#modif {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 2em;
+	padding-left: 1em;
+}
+
+#modif a{
+	color: black;
+	text-decoration: none;
 }
 
 .filtre{
@@ -256,3 +298,95 @@ footer nav ul {
 
 }
 
+/* CSS Modale */
+
+#modal{
+	position : fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrapper{
+	width : 100%;
+	max-width: 630px;
+	padding: 5px;
+	background-color: #ffffff;
+	border-radius: 10px;
+}
+
+.navigationModal{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+
+.navigationModal button{
+	cursor: pointer;
+	border: none;
+	background-color: #ffffff;
+	padding: 25px;
+}
+
+.modal-wrapper h3{
+	display: flex;
+	justify-content: center;
+	font-size: 25px;
+	font-weight: 400;
+
+}
+
+.galleryModal {
+	width: 66%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 1%;
+	grid-row-gap: 1%;
+	margin: 0px 0px 0px 100px;
+	padding: 30px 0px 50px 0px; 
+	border-bottom: 1px solid #B3B3B3;
+	justify-content: center;
+
+}
+
+.galleryModal img {
+	width: 100%;
+	justify-content: center;
+}
+
+.actionModal{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 25%;
+	border-top: #000000;
+	padding-top: 30px;
+}
+
+.actionModal button{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	border: none;
+	border-radius: 60px ;
+	cursor: pointer;
+	height: 40px;
+	width: 200px;
+}
+
+.actionModal a{
+	color: red;
+	font-family: 'Syne';
+	font-weight: 400;
+	text-decoration: none;
+	padding: 25px;
+}

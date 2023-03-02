@@ -10,6 +10,9 @@ fetch("http://localhost:5678/api/works")
   .then(function (data) {
     app.projets = data;
     displayProjects(data);
+    if (localStorage.getItem("token") !== "") {
+      displayProjectsModal(data)
+    }
   });
 
 fetch("http://localhost:5678/api/categories")
@@ -70,6 +73,21 @@ fetch("http://localhost:5678/api/categories")
       img.src = projet.imageUrl;
       img.alt = projet.title;
       figcaption.innerText = projet.title;
+      figure.append(img, figcaption);
+      gallery.appendChild(figure);
+    });
+  }
+
+  function displayProjectsModal(data){
+    const gallery = document.getElementById("galleryModal");
+    gallery.innerHTML=""
+    data.forEach(projet =>{
+      const figure = document.createElement("figure");
+      const img = document.createElement("img");
+      const figcaption = document.createElement("figcaption");
+      img.src = projet.imageUrl;
+      img.alt = projet.title;
+      figcaption.innerText = "éditer";
       figure.append(img, figcaption);
       gallery.appendChild(figure);
     });
