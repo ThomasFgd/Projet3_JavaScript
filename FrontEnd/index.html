@@ -13,14 +13,14 @@
 </head>
 
 <body>
-<div id="edition-mode" class="admin" style="display:none";>
+<div id="edition-mode" class="admin" style="display:none;">
 	<i class="fa-regular fa-pen-to-square"></i>
 	<p>Mode édition</p>
 	<button>publier les changements</a></button>
 </div>
 
 <header>
-	<a href="index.html"><h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1></a>
+	<a href="index.html"><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a>
 	<nav>
 		<ul>
 			<a href="#portfolio"><li>projets</li></a>
@@ -36,9 +36,9 @@
 			<img src="./assets/images/sophie-bluel.png" alt="">
 		</figure>
 		<article>
-			<div id='intro' class="modifier" style="display:non";>
+			<div id='intro' class="admin" style="display:none;">
 				<i class="fa-regular fa-pen-to-square"></i>
-				<a href="#modal" class="js-modal"><p>modifier</p></a>
+				<a href="#modal" class="js-modal">modifier</a>
 			</div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
@@ -50,9 +50,9 @@
 	<section id="portfolio">
 		<div id="modifier">
 			<h2>Mes Projets</h2>
-			<div id='modif' class="admin" style="display:non";>
+			<div id='modif' class="admin" style="display:none";>
 				<i class="fa-regular fa-pen-to-square"></i>
-				<a href="#modal" class="js-modal"><p>modifier</p></a>
+				<a href="#modal" class="js-modal">modifier</a>
 			</div>
 		</div>
 		<div class="filtre" id="filtre">
@@ -86,10 +86,10 @@
 </footer>
 
 <aside id="modal" class="modal" aria-hidden="true" aria-modal="false" role="dialog" style="display: none;" >
-	<div class="modal-wrapper">
+	<div class="modal-wrapper js-modal-stop">
 		<nav class="navigationModal">
-			<!----<button class="js-modal-return"><i class="fa-solid fa-arrow-left-long"></i></button>--->
-			<button class="js-modal-close"><i class="fa-solid fa-close"></i></button>
+			<button class="js-modal-return" ><i class="fa-solid fa-arrow-left-long" style="display: none;"></i></button>
+			<button class="js-modal-close"><i class="fa-solid fa-close" ></i></button>
 		</nav>
 		<h3>Galerie Photo</h3>
 		<section class="galleryModal" id="galleryModal">

@@ -1,10 +1,13 @@
-if (localStorage.getItem("token") !== ""){
-
+if (localStorage.getItem("token") && localStorage.getItem("token") !== ""){
+    displayOn()
 }
 
-const target = document.querySelectorAll(".admin")
-console.log(target)
-function displayOn() {
 
+function displayOn() {
+    const target = document.querySelectorAll(".admin")
+    console.log(target)
+    target.forEach(element => {
+       element.style.display = null
+    });
 }
  

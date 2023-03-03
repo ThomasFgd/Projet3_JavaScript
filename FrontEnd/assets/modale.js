@@ -1,29 +1,36 @@
 let modal = null;
 
 
-openModal = function(event) {
-    event.preventDefault()
-    const target = document.querySelector(event.target.getAttribute("href"));
-    document.getElementById('modal').style.display = null
-    document.getElementById('modal').setAttribute('aria-hidden', false)
-    document.getElementById('modal').setAttribute('aria-modal', true)
-    
+openModal = function(e) {
+    e.preventDefault()
+    console.log(e.target.getAttribute("href"))
+    const target = document.querySelector(e.target.getAttribute("href"))
+    target.style.display = null
+    target.removeAttribute('aria-hidden')
+    target.setAttribute('aria-modal', 'true')
+    modal=target
+    modal.addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
 }
 
 closeModal = function(event) {
+    if (modal === null) return
     event.preventDefault()
-    modal.style.display = none
+    modal.style.display = 'none';
     modal.setAttribute('aria-hidden', true)
-    modal.setAttribute('aria-modal', false)
-    modal = target
+    modal.removeAttribute('aria-modal')
     modal.removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
     modal = null
+}
 
+const stopPropagation = function (event){
+    event.stopPropagation()
 }
 
 document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal)
     
 })
-
-
