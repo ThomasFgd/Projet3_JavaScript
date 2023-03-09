@@ -28,8 +28,10 @@ fetch("http://localhost:5678/api/categories")
       button.dataset.id = category.id
 
       filtre.append(button);
+
     })
   })
+
   .then(function(){
       categorieEventListener();
   })
