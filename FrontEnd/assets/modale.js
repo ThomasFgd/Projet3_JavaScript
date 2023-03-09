@@ -59,15 +59,6 @@ document.querySelectorAll(".js-modal-return").forEach((a) => {
 
 //Modal Ajout Photo
 
-const addImageInput = document.querySelector('#addButton')
-
-addImageInput.addEventListener('change', () => {
-	const image = addImageInput.files[0]
-	const imageUrl = URL.createObjectURL(image)
-	
-	document.querySelector('#add-image-preview').innerHTML = `<img src="${imageUrl}" />`
-})
-
 addNewPhoto = async function (event) {
   const formData = new FormData();
 
