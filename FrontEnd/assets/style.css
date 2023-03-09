@@ -469,5 +469,24 @@ footer nav ul {
 	font-weight: 700;
 	font-size: 15px;
 	margin-top: 30px;
+}
+
+.trash {
+	background-color: rgba(0, 0, 0, 0.9);
+	border: none;
+	color: white;
+	border-radius: 5px;
+	width: 20px;
+	height: 20px;
+	position: relative;
+    top: -117px;
+    left: 55px;
+	cursor: pointer;
+}
+
+.trash i {
+	display: flex;
+	justify-content: center;
 
 }
+

@@ -3,7 +3,8 @@ const app = {
   categories: []
 }
 
-fetch("http://localhost:5678/api/works")
+function refreshData() {
+  fetch("http://localhost:5678/api/works")
   .then(function (response) {
     return response.json();
   })
@@ -14,6 +15,9 @@ fetch("http://localhost:5678/api/works")
       displayProjectsModal(data)
     }
   });
+}
+
+refreshData()
 
 fetch("http://localhost:5678/api/categories")
   .then(function (response) {
@@ -26,9 +30,7 @@ fetch("http://localhost:5678/api/categories")
       const button = document.createElement("button")
       button.textContent = category.name;
       button.dataset.id = category.id
-
       filtre.append(button);
-
     })
   })
 
@@ -80,6 +82,24 @@ fetch("http://localhost:5678/api/categories")
     });
   }
 
+     function deleteWork(event)  {
+        event.preventDefault();
+        const project = parseInt(event.target.id)
+        const deleteButton = event.target
+        console.log(project)
+        fetch(`http://localhost:5678/api/works/${project}`, {
+			    method: 'DELETE',
+			    headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+		    }).then(function (response) {
+          console.log(response);
+          closeModal()
+          refreshData()
+        });
+      }
+
   function displayProjectsModal(data){
     const gallery = document.getElementById("galleryModal");
     gallery.innerHTML=""
@@ -89,8 +109,17 @@ fetch("http://localhost:5678/api/categories")
       const figcaption = document.createElement("figcaption");
       img.src = projet.imageUrl;
       img.alt = projet.title;
+      const trash = document.createElement("div")
+      trash.innerHTML = `<button class="trash" id="${projet.id}"> <i class="fa-regular fa-trash-can" id="${projet.id}"></i></button>`;
+      document.querySelectorAll(".trash").forEach((a) => {
+        a.addEventListener("click", deleteWork);
+      });
       figcaption.innerText = "éditer";
-      figure.append(img, figcaption);
+      figure.append(img, figcaption, trash);
       gallery.appendChild(figure);
     });
   }
+
+   
+    
+    

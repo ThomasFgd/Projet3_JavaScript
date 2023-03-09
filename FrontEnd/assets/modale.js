@@ -9,18 +9,23 @@ openModal = function (e) {
   target.setAttribute("aria-modal", "true");
   modal = target;
   modal.addEventListener("click", closeModal);
-  modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+  modal.querySelectorAll(".js-modal-close").forEach(function(item) {
+    item.addEventListener("click", closeModal)
+  }) ;
   modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
 };
 
 closeModal = function (event) {
   if (modal === null) return;
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();}
   modal.style.display = "none";
   modal.setAttribute("aria-hidden", true);
   modal.removeAttribute("aria-modal");
   modal.removeEventListener("click", closeModal);
-  modal.querySelectorAll(".js-modal-close").removeEventListener("click", closeModal);  
+  modal.querySelectorAll(".js-modal-close").forEach(function(item) {
+    item.removeEventListener("click", closeModal)
+  });  
   modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
   modal = null;
 };
@@ -46,7 +51,8 @@ document.querySelectorAll(".ajoutPhoto").forEach((a) => {
 });
 
 returnModal = function(e) {
-  e.preventDefault();
+  if (e) {
+    e.preventDefault();}
   const target1 = document.querySelector(".modal1");
   target1.style.display = null;
   const target2 = document.querySelector(".modal2");
@@ -75,6 +81,23 @@ addNewPhoto = async function (event) {
     body: formData,
   }).then(function (response) {
     console.log(response);
+    returnModal()
+    closeModal()
+    refreshData()
   });
 };
+
 document.querySelector("#addButton").addEventListener("click", addNewPhoto);
+
+preview = function (event) {
+  const [file] = inputFile.files
+  if (file) {
+    const src = URL.createObjectURL(file);
+    document.querySelector(".preview").innerHTML = `<img src="${src}" width="50" height="auto"/>`;
+  }
+}
+
+inputFile = document.querySelector("#add-photo-input")
+inputFile.addEventListener("change", preview);
+
+
