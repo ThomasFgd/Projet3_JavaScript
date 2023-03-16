@@ -64,6 +64,9 @@ document.querySelectorAll(".js-modal-return").forEach((a) => {
 });
 
 //Modal Ajout Photo
+const addError = document.querySelector(".erreur");
+const AddElement = document.createElement("p");
+addError.appendChild(AddElement);
 
 addNewPhoto = async function (event) {
   const formData = new FormData();
@@ -80,10 +83,28 @@ addNewPhoto = async function (event) {
     },
     body: formData,
   }).then(function (response) {
-    console.log(response);
-    returnModal()
-    closeModal()
-    refreshData()
+      if (response.status === 201){
+          console.log(response);
+          returnModal()
+          closeModal()
+          refreshData()
+          AddElement.innerText="";
+          document.querySelector(".preview").innerHTML = `<i class="fa-solid fa-image"></i>`;
+          document.querySelectorAll('span').forEach(item => {
+            item.style.display = null
+          })
+          document.getElementById('title').value="";
+          document.getElementById('selectCategory').value="1";
+
+      }
+      else{
+          AddElement.innerText="Erreur lors de l'ajout de la photo"
+          return response.json();
+      }
+
+
+   
+    
   });
 };
 
@@ -93,7 +114,10 @@ preview = function (event) {
   const [file] = inputFile.files
   if (file) {
     const src = URL.createObjectURL(file);
-    document.querySelector(".preview").innerHTML = `<img src="${src}" width="50" height="auto"/>`;
+    document.querySelector(".preview").innerHTML = `<img src="${src}" height="170px" padding>`;
+    document.querySelectorAll('span').forEach(item => {
+      item.style.display = "none"
+    })
   }
 }
 

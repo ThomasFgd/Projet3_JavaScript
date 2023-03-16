@@ -58,7 +58,7 @@
 					<a href="#modal" class="js-modal">modifier</a>
 				</div>
 			</div>
-			<div class="filtre" id="filtre">
+			<div class="filtre no-admin" id="filtre" di>
 				<button data-id ="tous">Tous</button>
 			</div>
 			<div class="gallery" id="gallery">
@@ -111,11 +111,11 @@
 					<button class="js-modal-close"><i class="fa-solid fa-close"></i></button>
 				</nav>
 				<h3>Ajout Photo</h3>
-				<div class="center">
+				<div class="center" >
 					<label for="add-photo-input" class="addmodalphoto">
-						<div class="preview"><i class="fa-solid fa-image"></i></div>
+						<div class="preview" id="preview"><i class="fa-solid fa-image"></i></div>
 						<span id="fakeButton">+ Ajouter photo</span>
-						<p>jpg, png : 4mo max</p>
+						<span>jpg, png : 4mo max</span>
 					</label>
 					<input id="add-photo-input" type="file" style ="display:none;">
 					
@@ -130,6 +130,7 @@
 						</select>
 					</div>
 					<button type="submit" id="addButton">Valider</button>
+					<div class="erreur"></div>
 				</div>
 			</div>
 		</div>

@@ -404,6 +404,7 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
 }
 
 .addmodalphoto{
@@ -412,11 +413,11 @@ footer nav ul {
 	align-items: center;
 	justify-content: center;
 	width: 70%;
+	height: 170px;
 	background: #E8F1F7;
 	border-radius: 3px;
-	padding: 20px;
-	margin-top: 36px;
-	margin-bottom: 20px;
+	margin-top: 40px;
+	margin-bottom: 35px;
 
 }
 .fa-image{

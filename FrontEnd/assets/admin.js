@@ -7,8 +7,10 @@ function displayOn() {
     target.forEach(element => {
        element.style.display = null
     });
-    const target2 = document.querySelector(".no-admin")
-    target2.style.display = 'none';
+    const target2 = document.querySelectorAll(".no-admin")
+    target2.forEach(element => {
+        element.style.display = 'none'
+     });
 }
 
 

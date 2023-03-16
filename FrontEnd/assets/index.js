@@ -97,27 +97,29 @@ fetch("http://localhost:5678/api/categories")
           console.log(response);
           closeModal()
           refreshData()
+          
         });
       }
 
   function displayProjectsModal(data){
     const gallery = document.getElementById("galleryModal");
-    gallery.innerHTML=""
-    data.forEach(projet =>{
+    gallery.innerHTML="";
+    data.forEach((projet) =>{
       const figure = document.createElement("figure");
       const img = document.createElement("img");
       const figcaption = document.createElement("figcaption");
       img.src = projet.imageUrl;
       img.alt = projet.title;
-      const trash = document.createElement("div")
+      const trash = document.createElement("div");
       trash.innerHTML = `<button class="trash" id="${projet.id}"> <i class="fa-regular fa-trash-can" id="${projet.id}"></i></button>`;
-      document.querySelectorAll(".trash").forEach((a) => {
-        a.addEventListener("click", deleteWork);
-      });
+      
       figcaption.innerText = "éditer";
       figure.append(img, figcaption, trash);
       gallery.appendChild(figure);
     });
+    document.querySelectorAll(".trash").forEach((a) => {
+        a.addEventListener("click", deleteWork);
+      });
   }
 
    
