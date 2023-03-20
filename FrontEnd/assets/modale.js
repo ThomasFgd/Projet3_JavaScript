@@ -2,7 +2,6 @@ let modal = null;
 
 openModal = function (e) {
   e.preventDefault();
-  console.log(e.target.getAttribute("href"));
   const target = document.querySelector(e.target.getAttribute("href"));
   target.style.display = null;
   target.removeAttribute("aria-hidden");
@@ -75,6 +74,10 @@ addNewPhoto = async function (event) {
   formData.append("title", document.querySelector("#title").value);
   formData.append("category", document.querySelector("#selectCategory").value);
 
+  if (formData.image && formData.title && formData.category) {
+    
+  }
+
   fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: {
@@ -100,11 +103,7 @@ addNewPhoto = async function (event) {
       else{
           AddElement.innerText="Erreur lors de l'ajout de la photo"
           return response.json();
-      }
-
-
-   
-    
+      } 
   });
 };
 

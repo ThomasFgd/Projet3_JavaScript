@@ -361,6 +361,10 @@ footer nav ul {
 
 }
 
+#galleryModal figure{
+	position : relative;
+}
+
 .galleryModal img {
 	width: 100%;
 	justify-content: center;
@@ -479,9 +483,9 @@ footer nav ul {
 	border-radius: 5px;
 	width: 20px;
 	height: 20px;
-	position: relative;
-    top: -117px;
-    left: 55px;
+	position: absolute;
+    top: 5px;
+    right: 5px;
 	cursor: pointer;
 }
 
